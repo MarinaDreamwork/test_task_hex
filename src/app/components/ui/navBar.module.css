@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav_list {
+  padding: 0;
+}
+
+.nav_list li {
+  display: inline;
+}
+
+.nav_list_item {
+  margin: 2rem;
+}
+
+.nav_list_item_link {
+  text-decoration: none;
+  color: saddlebrown;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.nav_list_item_link:hover {
+  color: #b65f5f;
+  font-size: 2.1rem;
+}

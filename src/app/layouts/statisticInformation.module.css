@@ -1,0 +1,21 @@
+.statistic_title {
+  text-align: center;
+  color: rgb(37, 4, 4);
+  text-shadow: 2px 2px 3px rgb(105, 10, 10);
+}
+
+.pagination {
+  display: inline;
+}
+
+.previous {
+  border: 1px solid gray;
+}
+
+.selected {
+  color: red;
+}
+
+.link {
+  list-style-type: none;
+}

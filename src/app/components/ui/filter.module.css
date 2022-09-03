@@ -1,0 +1,22 @@
+.filter_wrapper {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.input_filter {
+  margin: 0.5rem;
+  padding: 0.4rem;
+  border: 1px solid rgb(143, 144, 168);
+}
+.input_filter:focus {
+  border: 1px solid red;
+}
+
+.input_short, .input_counter {
+  width: 10%;
+}
+
+.input_target {
+  width: 20%;
+}

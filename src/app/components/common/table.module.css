@@ -1,0 +1,37 @@
+.nodata_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.nodata_description {
+  color: grey;
+  font-size: 1.5rem;
+}
+
+.table_style {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+th, td {
+  border: 1px solid grey;
+  padding: 0.3rem;
+  color: rgb(37, 4, 4);
+}
+
+.short {
+  background: green;
+}
+
+.id_column {
+  width: 4%;
+}
+
+.short_column {
+  width: 6%;
+}
+
+.counter_column {
+  width: 7%;
+}
