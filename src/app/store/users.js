@@ -27,7 +27,8 @@ const usersSlice = createSlice({
       state.isLoading = false;
     }, 
     loginRequestFailed: (state, action) => {
-
+      state.error = action.payload;
+      state.isLoading = false;
     }
   }
 });

@@ -30,42 +30,15 @@ http.interceptors.request.use(
             Authorization: `Bearer ${accessToken}`,
             'Accept': 'application/json',
           };
-      }
-    } 
-        //const expiresDate = localStorageService.getTokenExpiresDate();
-        //const refreshToken = localStorageService.getRefreshToken();
-        //const isExpired = refreshToken && expiresDate < Date.now();
-
-        //if (isExpired) {
-          //const data = await authService.refresh();
-
-          //localStorageService.setTokens(data);
-        //}
-        //   const accessToken = localStorageService?.getAccessToken();
-        //   const getType = localStorageService?.getTokenType();
-        //   if (accessToken && getType === 'bearer') {
-        //         config.headers = { 
-        //         ...config.headers,  
-        //         Authorization: `Bearer ${accessToken}`,
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/x-www-form-urlencoded'
-        //       };
-        //  } else {
-           
-         //}
-        return config;
+        }
+      } 
+      return config;
     },
     function (error) {
         return Promise.reject(error);
     }
 );
-// function transormData(data) {
-//     return data && !data._id
-//         ? Object.keys(data).map((key) => ({
-//               ...data[key]
-//           }))
-//         : data;
-// }
+
 http.interceptors.response.use(
     (res) => {
       return res;

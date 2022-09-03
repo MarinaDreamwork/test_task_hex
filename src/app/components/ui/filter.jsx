@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getAllStat, getFilterInfo } from '../../store/statistics';
+import { getAllStat } from '../../store/statistics';
 import style from './filter.module.css';
 
 const Filter = ({ onFilter, currentStatInfo, onSet }) => {

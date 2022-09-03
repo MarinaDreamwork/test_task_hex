@@ -5,12 +5,11 @@ import TextField from '../components/common/form/textField';
 import SectionWrapper from '../components/common/style/sectionWrapper';
 import style from './squeeze.module.css';
 import { getIsLoggedIn, getUsername } from '../store/users';
-import localStorageService from '../services/localStorage.service';
 import { getShortLink } from '../store/links';
 
 const Squeeze = () => {
+  const isLoggedIn = useSelector(getIsLoggedIn());
   const dispatch = useDispatch();
-  const isLoggedIn = localStorageService.getAccessToken();
   const username = useSelector(getUsername());
   const navigate = useNavigate();
   const [data, setData] = useState({
@@ -26,13 +25,10 @@ const Squeeze = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('data', data);
-    //  отправляем на бэк
     dispatch(getShortLink(data));
     navigate('stats');
   };
 
-  if (!isLoggedIn) return 'Loading...'
   return (
     <SectionWrapper>
       {
@@ -60,3 +56,4 @@ const Squeeze = () => {
 };
 
 export default Squeeze;
+
