@@ -1,6 +1,7 @@
 import axios from "axios";
 import configFile from "../config.json";
 import localStorageService from "./localStorage.service";
+import loginService from "./login.service";
 //import { getAccessToken, getTokenType } from "./localStorage.service";
 
 const http = axios.create({
@@ -9,12 +10,13 @@ const http = axios.create({
 
 http.interceptors.request.use(
     async function (config) {
-      console.log('config', config);
+      const expiresDate = localStorageService.getTokenExpiresDate();
+      const isExpired = expiresDate < Date.now();
       const url = config.url;
       if(url.includes('register') || url.includes('squeese')) {
         config.headers = {
             ...config.headers,
-            'Accept': 'application/json',
+            'Accept': 'application/json'
           }
       } else if(url.includes('login')) {
         config.headers = {
@@ -27,11 +29,17 @@ http.interceptors.request.use(
         if (accessToken && getType === 'bearer') {
           config.headers = { 
             ...config.headers,  
-            Authorization: `Bearer ${accessToken}`,
+            'Authorization': `Bearer ${accessToken}`,
             'Accept': 'application/json',
           };
         }
       } 
+      if(isExpired) {
+        const username = localStorageService.getUsername();
+        const password = localStorageService.getPassword();
+        const data = await loginService.login({ username, password });
+        localStorageService.setToken(data);
+      }
       return config;
     },
     function (error) {

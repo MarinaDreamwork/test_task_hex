@@ -10,7 +10,8 @@ const usersSlice = createSlice({
     entities: null,
     isLoading: true,
     error: null,
-    isLoggedIn: false
+    isLoggedIn: false,
+    lastFetch: null
   },
   reducers: {
     signinRequestSuccess: (state, action) => {
@@ -23,6 +24,7 @@ const usersSlice = createSlice({
       state.isLoading = false;
     },
     loginRequestSuccess: (state, action) => {
+      state.entities = action.payload.access_token;
       state.isLoggedIn = true;
       state.isLoading = false;
     }, 
@@ -44,13 +46,13 @@ const {
 const signinRequest = createAction('users/signinRequest');
 const loginRequest = createAction('users/loginRequest');
 
-export const register = (payload) => async (dispatch) => {
+export const register = ({ payload, redirect }) => async (dispatch) => {
   dispatch(signinRequest());
   try {
     const data = await registerService.register(payload);
     dispatch(signinRequestSuccess(data));
     console.log(data);
-      history.push('/stats');
+      history.createHref('stats');
   } catch(error) {
     console.log(error);
     const status = error.response.status;
@@ -63,19 +65,19 @@ export const register = (payload) => async (dispatch) => {
   }
 };
 
-export const login = (payload) => async (dispatch) => {
-  const { username, password} = payload;
+export const login = ({ payload, redirect }) => async (dispatch) => {
+  const { username, password } = payload;
   dispatch(loginRequest());
   try {
-     const data = await loginService.login(`grant_type=&username=${username}&password=${password}&scope=&client_id=&client_secret=`);
-    localStorageService.setToken(data);
+    const data = await loginService.login({ username, password });
+    localStorageService.setToken({ data, username, password });
     dispatch(loginRequestSuccess(data));
+    history.replace(redirect);
     console.log('data', data);
   } catch (error) {
-    dispatch(loginRequestFailed(error))
+    dispatch(loginRequestFailed(error.message))
   }
-}
-
+};
 
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
 export const getUsername = () => (state) => state.users.entities?.username;

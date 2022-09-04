@@ -32,6 +32,10 @@ th, td {
   width: 6%;
 }
 
+.target_column {
+  width: 10%;
+}
+
 .counter_column {
   width: 7%;
 }

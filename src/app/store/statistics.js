@@ -43,8 +43,6 @@ const {
 } = actions;
 
 export const loadStatisticData = (payload) => async (dispatch) => {
-  // в payload обрабатываем строку, которая должна страть query запросом
-  console.log(payload);
   dispatch(statisticRequest());
   try {
     const data = await statisticService.getStatistic(payload);

@@ -23,7 +23,7 @@ const linksSlice = createSlice({
 const linksRequest = createAction('links/request');
 
 const {reducer: linksReducer, actions} = linksSlice;
-const { linksRequestSuccess, linksRequestFailed} = actions;
+const { linksRequestSuccess, linksRequestFailed } = actions;
 
 export const getShortLink = ({ link }) => async (dispatch) => {
   console.log(link);

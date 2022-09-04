@@ -26,9 +26,8 @@ const RegisterForm = ({ onTypeChange }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('data', data);
-    // передаем через redux на бэк
-    dispatch(register(data));
-    navigate('/');
+    const redirect = navigate('/');
+    dispatch(register({ payload: data, redirect }));
   };
 
   const typeChangeRegister = () => {

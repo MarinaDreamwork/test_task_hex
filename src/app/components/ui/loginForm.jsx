@@ -24,8 +24,8 @@ const LoginForm = ({ onTypeChange }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('data', data);
-    dispatch(login(data));
-    navigate('/');
+    const redirect = navigate('/');
+    dispatch(login({ payload: data, redirect }));
   };
 
   const typeChangeRegister = () => {

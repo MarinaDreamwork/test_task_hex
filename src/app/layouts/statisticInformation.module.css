@@ -1,3 +1,8 @@
+.loading_title {
+  display: flex;
+  justify-content: center;
+}
+
 .statistic_title {
   text-align: center;
   color: rgb(37, 4, 4);
