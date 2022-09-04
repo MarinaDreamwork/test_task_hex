@@ -7,7 +7,7 @@ import Squeeze from './layouts/squeeze';
 const App = () => {
 
   return (
-    <div className='m-2'>
+    <div>
       <NavBar />
       <Routes>
         <Route path='/' element={<Squeeze />}/>
