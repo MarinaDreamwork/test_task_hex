@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import TextField from '../common/form/textField';
 import SectionWrapper from '../common/style/sectionWrapper';
 import style from './loginForm.module.css';
-import { useDispatch } from 'react-redux';
-import { login } from '../../store/users';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoginError, login } from '../../store/users';
 
 const LoginForm = ({ onTypeChange }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isError, setIsError] = useState(null);
+  const loginError = useSelector(getLoginError());
   const [data, setData] = useState({
     username: '',
     password: ''
@@ -24,7 +26,7 @@ const LoginForm = ({ onTypeChange }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('data', data);
-    const redirect = navigate('/');
+    const redirect = navigate('/stats');
     dispatch(login({ payload: data, redirect }));
   };
 
@@ -61,6 +63,10 @@ const LoginForm = ({ onTypeChange }) => {
               <p onClick={typeChangeRegister} className={style.register_button}>Don't have an account? <span className={style.register_button_style}>Sign in</span></p>
             </div>
           </form>
+          {
+            isError &&
+            <p>{isError}</p>
+          }
         </div>
       </div>
     </SectionWrapper>

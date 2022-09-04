@@ -4,12 +4,12 @@ import TextField from '../common/form/textField';
 import SectionWrapper from '../common/style/sectionWrapper';
 import style from './loginForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { register, getRegisterError } from '../../store/users';
+import { register, getLoginError } from '../../store/users';
 
 const RegisterForm = ({ onTypeChange }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isError = useSelector(getRegisterError());
+  const isError = useSelector(getLoginError());
 
   const [data, setData] = useState({
     username: '',
@@ -26,7 +26,7 @@ const RegisterForm = ({ onTypeChange }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('data', data);
-    const redirect = navigate('/');
+    const redirect = navigate('/stats');
     dispatch(register({ payload: data, redirect }));
   };
 

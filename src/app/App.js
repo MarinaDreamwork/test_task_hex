@@ -11,8 +11,8 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path='/' element={<Squeeze />}/>
-        <Route path='stats' element={<StatisticInformation />}/>
-        <Route path='login' element={<Form />}/>
+        <Route path='/stats' element={<StatisticInformation />}/>
+        <Route path='/login' element={<Form />}/>
       </Routes>
     </div>
   );

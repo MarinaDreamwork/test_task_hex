@@ -32,8 +32,6 @@ const StatisticInformation = () => {
     setCurrentPage(1);
   };
 
-  console.log('sortBy', sortBy);
-
   const handleSort = (item) => {
     setSortBy(item);
     console.log('item', item);

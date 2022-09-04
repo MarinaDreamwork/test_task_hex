@@ -2,6 +2,7 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 import localStorageService from "../services/localStorage.service";
 import loginService from "../services/login.service";
 import registerService from '../services/register.service'; 
+import { generateError } from "../utils/generateErrors";
 import history from "../utils/history";
 
 const usersSlice = createSlice({
@@ -52,7 +53,7 @@ export const register = ({ payload, redirect }) => async (dispatch) => {
     const data = await registerService.register(payload);
     dispatch(signinRequestSuccess(data));
     console.log(data);
-      history.createHref('stats');
+    history.push(redirect);
   } catch(error) {
     console.log(error);
     const status = error.response.status;
@@ -66,21 +67,25 @@ export const register = ({ payload, redirect }) => async (dispatch) => {
 };
 
 export const login = ({ payload, redirect }) => async (dispatch) => {
-  const { username, password } = payload;
+  console.log(payload);
   dispatch(loginRequest());
   try {
-    const data = await loginService.login({ username, password });
-    localStorageService.setToken({ data, username, password });
+    const data = await loginService.login(payload);
+    localStorageService.setToken(data);
     dispatch(loginRequestSuccess(data));
-    history.replace(redirect);
-    console.log('data', data);
+    history.push(redirect);
   } catch (error) {
-    dispatch(loginRequestFailed(error.message))
+    console.log('error', error);
+    const { code, message } = error;
+    if(code === 'ERR_NETWORK') {
+      const messageError = generateError(message);
+      dispatch(loginRequestFailed(messageError));
+    }
   }
 };
 
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
 export const getUsername = () => (state) => state.users.entities?.username;
-export const getRegisterError = () => (state) => state.users.error;
+export const getLoginError = () => (state) => state.users.error; 
 
 export default usersReducer;

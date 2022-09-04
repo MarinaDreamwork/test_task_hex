@@ -30,7 +30,7 @@
   color: rgb(57, 11, 57);
 }
 
-.login_title {
+.login_error_title {
   display: flex;
   justify-content: center;
 }

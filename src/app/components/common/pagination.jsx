@@ -12,7 +12,7 @@ const Pagination = ({
   const [isPrevious, setPrevious] = useState(false);
   const [isNext, setNext] = useState(true);
   const [firstRangeItem, setFirstRangeItem] = useState(1);
-  const [pageCount, setPageCount] = useState(15);
+  const pageCount = 15;
   const [lastRangeItem, setLastRangeItem] = useState(firstRangeItem + pageCount);
 
   const pages = _.range(firstRangeItem, lastRangeItem);
@@ -29,6 +29,7 @@ const Pagination = ({
     }
     setFirstRangeItem(lastPageItem + 1);
   };
+
   const showPreviousItems = () => {
     setNext(true);
     const firstPageItem = pages[0];
@@ -38,6 +39,8 @@ const Pagination = ({
     setFirstRangeItem(prevState => prevState - pageCount);
     setLastRangeItem(firstPageItem);
   };
+
+  //const handleChange = ()
 
   useEffect(() => {
     onPageChange(firstRangeItem);
@@ -66,7 +69,7 @@ const Pagination = ({
   //     setNext(false);
   //   }
   // }, [lastItem]);
-  console.log('filteredItems');
+  console.log('filteredItems', filteredItems);
   if (filteredItems?.length == 0) return '';
   else {
     return (

@@ -10,8 +10,8 @@ const http = axios.create({
 
 http.interceptors.request.use(
     async function (config) {
-      const expiresDate = localStorageService.getTokenExpiresDate();
-      const isExpired = expiresDate < Date.now();
+      // const expiresDate = localStorageService.getTokenExpiresDate();
+      // const isExpired = expiresDate < Date.now();
       const url = config.url;
       if(url.includes('register') || url.includes('squeese')) {
         config.headers = {
@@ -34,16 +34,16 @@ http.interceptors.request.use(
           };
         }
       } 
-      if(isExpired) {
-        const username = localStorageService.getUsername();
-        const password = localStorageService.getPassword();
-        const data = await loginService.login({ username, password });
-        localStorageService.setToken(data);
-      }
+      // if(isExpired) {
+      //   const username = localStorageService.getUsername();
+      //   const password = localStorageService.getPassword();
+      //   const data = await loginService.login(username, password);
+      //   localStorageService.setToken(data);
+      // }
       return config;
     },
     function (error) {
-        return Promise.reject(error);
+      return Promise.reject(error);
     }
 );
 
