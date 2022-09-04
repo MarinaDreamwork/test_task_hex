@@ -1,9 +1,13 @@
-import style from '../../ui/filter.module.css';
-
-const FilteredTextField = ({ placeholder, value, name, onTargetFilter }) => {
+const FilteredTextField = ({
+  placeholder,
+  value,
+  name,
+  onTargetFilter,
+  style
+}) => {
   return (
     <input
-      className={style.input_filter + ' ' + style.input_short}
+      className={style}
       type='text'
       placeholder={placeholder}
       value={value}

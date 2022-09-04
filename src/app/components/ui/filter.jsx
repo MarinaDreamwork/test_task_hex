@@ -42,21 +42,21 @@ const Filter = ({ onFilter, currentStatInfo }) => {
         value={data.short}
         name='short'
         onTargetFilter={handleTargetFilter}
-        style={style.input_short}
+        style={style.input_filter + ' ' + style.input_short}
       />
       <FilteredTextField
         placeholder='filter by target'
         value={data.target}
         name='target'
         onTargetFilter={handleTargetFilter}
-        style={style.input_target}
+        style={style.input_filter + ' ' + style.input_target}
       />
       <FilteredTextField
         placeholder='filter by counter'
         value={data.counter}
         name='counter'
         onTargetFilter={handleTargetFilter}
-        style={style.input_counter}
+        style={style.input_filter + ' ' + style.input_counter}
       />
     </div>);
 };
