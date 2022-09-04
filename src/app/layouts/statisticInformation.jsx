@@ -34,8 +34,6 @@ const StatisticInformation = () => {
 
   const handleSort = (item) => {
     setSortBy(item);
-    console.log('item', item);
-    // если данные отфильтрованы - то не отправляем запрос на сервер, а сортируем на месте
     if (filteredItems) {
       const orderFilteredData = _.orderBy(filteredItems, [sortBy.path], [sortBy.order])
       setCurrentItems(orderFilteredData);
@@ -46,7 +44,6 @@ const StatisticInformation = () => {
   };
 
   const handlePageChange = (pageIndex) => {
-    console.log(pageIndex);
     setCurrentPage(pageIndex);
     dispatch(loadStatisticData(`offset=${pageIndex === 1 ? 0 : (pageIndex * itemsPerPage) - itemsPerPage}&limit=${itemsPerPage}`));
   };
@@ -60,8 +57,6 @@ const StatisticInformation = () => {
     setCurrentItems(currentStatInfo);
     dispatch(loadAllStatisticInformation());
   }, []);
-
-  console.log('filteredItems', filteredItems);
 
   useEffect(() => {
     setCurrentItems((filteredItems && (paginate(filteredItems, currentPage, itemsPerPage))) || currentStatInfo);
@@ -78,8 +73,15 @@ const StatisticInformation = () => {
         {
           isLogged && (<>
             <h2 className={style.statistic_title}>Statistic Information</h2>
-            <Filter onFilter={handleFilter} currentStatInfo={currentStatInfo} onSet={handleSetCurrentItems} />
-            <Table currentItems={currentItems} selectedSort={sortBy} onSort={handleSort} />
+            <Filter
+              onFilter={handleFilter}
+              currentStatInfo={currentStatInfo}
+            />
+            <Table
+              currentItems={currentItems}
+              selectedSort={sortBy}
+              onSort={handleSort}
+            />
             <Pagination
               onPageChange={handlePageChange}
               currentPage={currentPage}
@@ -88,7 +90,6 @@ const StatisticInformation = () => {
             />
           </>)
         }
-
       </SectionWrapper>
     );
   };

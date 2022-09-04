@@ -1,5 +1,5 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
-import linksService from "../services/links.service";
+import { createAction, createSlice } from '@reduxjs/toolkit';
+import linksService from '../services/links.service';
 
 const linksSlice = createSlice({
   name: 'links',

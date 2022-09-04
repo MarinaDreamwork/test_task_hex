@@ -1,6 +1,6 @@
-import { useState } from "react";
-import LoginForm from "../components/ui/loginForm";
-import RegisterForm from "../components/ui/registerForm";
+import { useState } from 'react';
+import LoginForm from '../components/ui/loginForm';
+import RegisterForm from '../components/ui/registerForm';
 
 const Form = () => {
   const [type, setType] = useState('register');

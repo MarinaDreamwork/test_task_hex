@@ -1,6 +1,6 @@
 import httpService from './http.service';
 
-const loginEndPoint = 'login'
+const loginEndPoint = 'login';
 
 const loginService = {
   login: async (payload) => {

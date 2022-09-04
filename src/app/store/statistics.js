@@ -1,5 +1,5 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
-import statisticService from "../services/statistic.service";
+import { createAction, createSlice } from '@reduxjs/toolkit';
+import statisticService from '../services/statistic.service';
 
 const statisticSlice = createSlice({
   name: 'statistics',
@@ -68,6 +68,5 @@ export const getCurrentStatiscticData = () => (state) => state.statistics.data;
 export const getAllStatLength = () => (state) => state.statistics.allLength;
 export const getAllStat = () => (state) => state.statistics.allData;
 export const getLoadingStatistic = () => (state) => state.statistics.isLoading;
-export const getFilterInfo = (payload) => (state) => state.statistics.allData?.filter(item => item.target.includes(payload.target) && item.short.includes(payload.short) && item.counter.toString().includes(payload.counter.toString()));
 
 export default statisticsReducer;

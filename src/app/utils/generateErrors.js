@@ -1,8 +1,8 @@
 export function generateError(message) {
     switch (message) {
-        case "Network Error":
-            return "Network problem. Please try again later";
+        case 'Network Error':
+            return 'Network problem. Please try again later';
         default:
-            return "Слишком много попыток входа. Попробуйте позднее";
+            return 'Error server. Please try later';
     }
 }

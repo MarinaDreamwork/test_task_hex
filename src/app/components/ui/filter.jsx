@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getAllStat } from '../../store/statistics';
+import FilteredTextField from '../common/form/filterTextField';
 import style from './filter.module.css';
 
-const Filter = ({ onFilter, currentStatInfo, onSet }) => {
+const Filter = ({ onFilter, currentStatInfo }) => {
   const allData = useSelector(getAllStat());
   const [data, setData] = useState({
     short: '',
@@ -24,8 +25,6 @@ const Filter = ({ onFilter, currentStatInfo, onSet }) => {
       ...prevState,
       [target.name]: target.value
     }));
-
-    console.log('data', data);
   };
 
   useEffect(() => {
@@ -38,26 +37,26 @@ const Filter = ({ onFilter, currentStatInfo, onSet }) => {
 
   return (
     <div className={style.filter_wrapper}>
-      <input
-        className={style.input_filter + ' ' + style.input_short} type='text'
+      <FilteredTextField
         placeholder='filter by short'
         value={data.short}
         name='short'
-        onChange={handleTargetFilter}
+        onTargetFilter={handleTargetFilter}
+        style={style.input_short}
       />
-      <input
-        className={style.input_filter + ' ' + style.input_target} type='text'
+      <FilteredTextField
         placeholder='filter by target'
         value={data.target}
         name='target'
-        onChange={handleTargetFilter}
+        onTargetFilter={handleTargetFilter}
+        style={style.input_target}
       />
-      <input
-        className={style.input_filter + ' ' + style.input_counter} type='text'
+      <FilteredTextField
         placeholder='filter by counter'
         value={data.counter}
         name='counter'
-        onChange={handleTargetFilter}
+        onTargetFilter={handleTargetFilter}
+        style={style.input_counter}
       />
     </div>);
 };

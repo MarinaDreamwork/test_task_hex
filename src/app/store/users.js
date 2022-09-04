@@ -1,9 +1,9 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
-import localStorageService from "../services/localStorage.service";
-import loginService from "../services/login.service";
+import { createAction, createSlice } from '@reduxjs/toolkit';
+import localStorageService from '../services/localStorage.service';
+import loginService from '../services/login.service';
 import registerService from '../services/register.service'; 
-import { generateError } from "../utils/generateErrors";
-import history from "../utils/history";
+import { generateError } from '../utils/generateErrors';
+import history from '../utils/history';
 
 const usersSlice = createSlice({
   name: 'users',

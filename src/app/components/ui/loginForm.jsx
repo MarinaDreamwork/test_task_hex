@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TextField from '../common/form/textField';
 import SectionWrapper from '../common/style/sectionWrapper';
@@ -25,7 +25,6 @@ const LoginForm = ({ onTypeChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('data', data);
     const redirect = navigate('/stats');
     dispatch(login({ payload: data, redirect }));
   };
@@ -33,6 +32,10 @@ const LoginForm = ({ onTypeChange }) => {
   const typeChangeRegister = () => {
     onTypeChange('register');
   };
+
+  useEffect(() => {
+    setIsError(loginError);
+  }, [loginError])
 
   return (
     <SectionWrapper>

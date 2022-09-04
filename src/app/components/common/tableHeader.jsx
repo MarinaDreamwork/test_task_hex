@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const TableHeader = ({ columnHeaders, selectedSort, onSort }) => {
 
   const handleSort = (item) => {

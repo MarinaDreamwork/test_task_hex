@@ -25,7 +25,6 @@ const RegisterForm = ({ onTypeChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('data', data);
     const redirect = navigate('/stats');
     dispatch(register({ payload: data, redirect }));
   };

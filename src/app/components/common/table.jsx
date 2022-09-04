@@ -3,7 +3,6 @@ import TableBody from './tableBody';
 import TableHeader from './tableHeader';
 
 const Table = ({ currentItems, selectedSort, onSort }) => {
-  // здесь получаем данные, если их нет отобразить нет данных, не отображая саму таблицу. TableBody передаем инфу с бэка
   const columnHeaders = {
     id: {
       name: 'id'

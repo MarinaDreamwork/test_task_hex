@@ -1,14 +1,8 @@
-import { getCurrentStatiscticData } from "../../store/statistics";
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import style from './table.module.css';
 import copy from 'copy-to-clipboard';
 
 const TableBody = ({ currentItems }) => {
-  console.log('currentItems', currentItems);
-  const statData = useSelector(getCurrentStatiscticData());
-  console.log('statData', statData);
-
   const [copySuccess, setCopySuccess] = useState();
 
   const copyToClipboard = (e) => {
@@ -24,7 +18,11 @@ const TableBody = ({ currentItems }) => {
   }, [copySuccess]);
 
   if (!currentItems) {
-    return 'No statistic data yet';
+    return (
+      <div className={style.nodata_wrapper}>
+        <p>No statistic data yet</p>
+      </div>
+    );
   } else {
     return (
       <>

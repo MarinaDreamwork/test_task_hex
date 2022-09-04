@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import TextField from '../components/common/form/textField';
 import SectionWrapper from '../components/common/style/sectionWrapper';
@@ -16,7 +15,6 @@ const Squeeze = () => {
   const newLink = useSelector(getCreatedLink());
   const isLoggedIn = useSelector(getIsLoggedIn());
   const loginError = useSelector(getLoginError());
-  console.log('loginError', loginError);
 
   const [data, setData] = useState({
     link: ''
@@ -51,7 +49,7 @@ const Squeeze = () => {
   return (
     <SectionWrapper>
       {
-        !loginError ? (
+        !networkError ? (
           isLogged ? (
             <>
               <div className={style.greet_title_wrapper}>
