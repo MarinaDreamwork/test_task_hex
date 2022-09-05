@@ -75,7 +75,7 @@ const Pagination = ({
                   className={style.page_item + ' ' + (page === currentPage ? style.active : '')}
                   onClick={() => onPageChange(page)}
                 >
-                  <a className={style.page_link} href='/'>
+                  <a className={style.page_link}>
                     {page}
                   </a>
                 </li>

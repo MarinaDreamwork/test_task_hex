@@ -22,9 +22,7 @@ const Table = ({ currentItems, selectedSort, onSort }) => {
   };
   if (currentItems?.length === 0) {
     return (
-      <div className={style.nodata_wrapper}>
-        <p className={style.nodata_description}>No filtered data...</p>
-      </div>
+      <p className={style.nodata_description}>No filtered data...</p>
     )
   } else {
     return (

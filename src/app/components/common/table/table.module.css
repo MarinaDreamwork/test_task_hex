@@ -6,6 +6,7 @@
 .nodata_description {
   color: grey;
   font-size: 1.5rem;
+  margin: 0 auto;
 }
 
 .table_style {
