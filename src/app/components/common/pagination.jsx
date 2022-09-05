@@ -64,7 +64,7 @@ const Pagination = ({
               isPrevious && (
                 <li className={style.page_item + ' ' + style.page_item_next}
                   onClick={() => showPreviousItems()}>
-                  <a className={style.page_link + ' ' + style.page_link_next} href='#'>previous</a>
+                  <a className={style.page_link + ' ' + style.page_link_next} href='/'>previous</a>
                 </li>
               )
             }
@@ -75,7 +75,7 @@ const Pagination = ({
                   className={style.page_item + ' ' + (page === currentPage ? style.active : '')}
                   onClick={() => onPageChange(page)}
                 >
-                  <a className={style.page_link} href='#'>
+                  <a className={style.page_link} href='/'>
                     {page}
                   </a>
                 </li>
@@ -84,7 +84,7 @@ const Pagination = ({
             {isNext && (
               <li className={style.page_item + ' ' + style.page_item_next}
                 onClick={() => showNextItems()}>
-                <a className={style.page_link + ' ' + style.page_link_next} href='#'>next</a>
+                <a className={style.page_link + ' ' + style.page_link_next} href='/'>next</a>
               </li>
             )}
           </ul>

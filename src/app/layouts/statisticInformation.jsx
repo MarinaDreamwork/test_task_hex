@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import SectionWrapper from '../components/common/style/sectionWrapper';
-import Table from '../components/common/table';
+import Table from '../components/common/table/table';
 import Pagination from '../components/common/pagination';
 import style from './statisticInformation.module.css';
 import { useDispatch, useSelector } from 'react-redux';

@@ -13,7 +13,7 @@ const TableBody = ({ currentItems }) => {
   useEffect(() => {
     if (copySuccess) {
       copy(copySuccess);
-      alert(`short link ${copySuccess} successful copied!`);
+      alert(`Short link ${copySuccess} successful copied!`);
     }
   }, [copySuccess]);
 
